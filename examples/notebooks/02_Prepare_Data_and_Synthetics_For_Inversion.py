@@ -6,11 +6,11 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.11.0
+#       jupytext_version: 1.16.7
 #   kernelspec:
-#     display_name: obspy
+#     display_name: Python 3 (ipykernel)
 #     language: python
-#     name: obspy
+#     name: python3
 # ---
 
 # ### Prepare Data and Synthetics for Moment Tensor Inversion
@@ -18,7 +18,7 @@
 # We have a few more steps to go through before inversion.
 #
 # One important step is to create synthetic Green's functions (aka synthetic seismograms) from wavenumber integration (FK). This type of method generates complete synthetic seismograms, we will use the software package ***Computer Programs in Seismology*** by R.B Herrmann.
-# <a href="http://www.eas.slu.edu/eqc/eqccps.html" target="_blank">Link to software</a>
+# <a href="https://rbherrmann.github.io/ComputerProgramsSeismology/index.html" target="_blank">Link to software</a>
 #
 # In this notebook we will:
 # * Filter and cut the seismograms

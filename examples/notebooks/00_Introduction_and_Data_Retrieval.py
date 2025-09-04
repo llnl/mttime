@@ -6,11 +6,11 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.11.0
+#       jupytext_version: 1.16.7
 #   kernelspec:
-#     display_name: obspy
+#     display_name: Python 3 (ipykernel)
 #     language: python
-#     name: obspy
+#     name: python3
 # ---
 
 # ### Example: 2019-07-16 Earthquake near Byron, California
@@ -23,7 +23,7 @@
 # * Calculate Green's functions.
 # * Calculate moment tensor using tdmtpy.
 #
-# Green's functions are computed using the software package Computer Porgrams in Seismology by Robert Herrmann (http://www.eas.slu.edu/eqc/eqccps.html).
+# Green's functions are computed using the software package Computer Porgrams in Seismology by Robert Herrmann (https://rbherrmann.github.io/ComputerProgramsSeismology/index.html).
 #
 # To run this tutorial you will need Python 3+ and the following packages:
 # * ObsPy
