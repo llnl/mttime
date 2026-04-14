@@ -205,9 +205,6 @@ def beach_mw_depth(tensors, event, show, format):
                    axes=None,
                   )
         # Move the beach ball to the right position
-        #bb.set_transform(fig.dpi_scale_trans)
-        #bb.set_offsets((tensor.depth, tensor.total_VR+10))
-        #bb._transOffset = ax1.transData
         # https://github.com/obspy/obspy/issues/2887
         # Perform aspect ratio hack
         bb.set_transform(transforms.Affine2D(np.identity(3)))
@@ -410,19 +407,19 @@ def plot_lune(m, gamma, delta, show, format):
     ax.plot(x, y, "k-", transform=data_crs)
 
     # Plot source-type
-    x, y = projection.transform_point(gamma, delta, data_crs)
-    xy = (x,y)
-    bb = beach(m, xy=(x,y), facecolor="red", width=20, show_iso=True, axes=None)
-    # bb.set_transform(fig.dpi_scale_trans)
-    # bb.set_offsets((gamma, delta))
-    # bb._transOffset = ax.transData
-    bb.set_transform(transforms.Affine2D(np.identity(3)))
-    for point in bb._paths:
-        point.vertices -= xy
-    bb.set_offsets(xy)
-    bb.set_offset_transform(ax.transData)
-    ax.add_collection(bb)
-    #ax.plot(gamma, delta, "ro", markeredgecolor="k", transform=ccrs.PlateCarree())
+    # x, y = projection.transform_point(gamma, delta, data_crs)
+    # xy = (x,y)
+    # bb = beach(m, xy=(x,y), facecolor="red", width=20, show_iso=True, axes=None)
+    # # bb.set_transform(fig.dpi_scale_trans)
+    # # bb.set_offsets((gamma, delta))
+    # # bb._transOffset = ax.transData
+    # bb.set_transform(transforms.Affine2D(np.identity(3)))
+    # for point in bb._paths:
+    #     point.vertices -= xy
+    # bb.set_offsets(xy)
+    # bb.set_offset_transform(ax.transData)
+    # ax.add_collection(bb)
+    ax.plot(gamma, delta, "ro", markeredgecolor="k", transform=ccrs.PlateCarree())
 
     if show:
         plt.show()
@@ -481,7 +478,7 @@ def _new_page(nsta, nrows, ncols, title, annot=None, offset=2):
     for i in range(nsta - 1):
         _adjust_spines(ax1[i, 0], ["left"])
         _adjust_spines(ax1[i, 1], [])
-        _adjust_spines(ax1[i, 2], ["bottom"])
+        _adjust_spines(ax1[i, 2], [])
     _adjust_spines(ax1[-1, 0], ["left", "bottom"])
     _adjust_spines(ax1[-1, 1], ["bottom"])
     _adjust_spines(ax1[-1, 2], ["bottom"])

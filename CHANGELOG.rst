@@ -4,6 +4,12 @@ Changelog
 Current release is version 1.0.0
 
 
+2026-04-14
+----------
+
+- Pandas 3.0 will change, modified _update_table_index in inverse configuration.
+
+
 2021-04-16
 ----------
 

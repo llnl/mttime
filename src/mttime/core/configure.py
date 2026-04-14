@@ -305,7 +305,8 @@ class Configure(object):
         location = 6
         for component in self.components:
             df.insert(loc=location, column=component, value=df_col[component])
-            df[component].fillna(df.Z, inplace=True)
+            # df[component].fillna(df.Z, inplace=True) # futurewarning, will change in pandas 3.0
+            df.fillna({component: df.Z}, inplace=True)
             location += 1
 
         df.drop(columns="used", axis=1, inplace=True)
