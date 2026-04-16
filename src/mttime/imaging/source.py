@@ -338,11 +338,12 @@ def plot_lune(m, gamma, delta, show, format):
     # Draw boundary around the lune
     longitude = np.concatenate([[-30], np.tile(-30, 180), [-30], np.tile(30, 180), [30]])
     latitude = np.concatenate([[-90], np.arange(-90, 90, 1), [90], np.arange(90, -90, -1), [-90]])
-    codes = np.hstack([mpath.MOVETO, [mpath.LINETO] * 180,
-                       mpath.MOVETO, [mpath.LINETO] * 180,
-                       mpath.MOVETO])
+    # codes = np.hstack([mpath.MOVETO, [mpath.LINETO] * 180,
+    #                    mpath.MOVETO, [mpath.LINETO] * 180,
+    #                    mpath.MOVETO])
     verts = np.column_stack([longitude[::-1], latitude[::-1]])
-    path = mpath(verts, codes[::-1])
+    # path = mpath(verts, codes[::-1])
+    path = mpath(verts)
     ax.set_boundary(path, transform=data_crs)
     ax.set_extent([-30, 30, -90, 90], data_crs)
 
@@ -407,19 +408,16 @@ def plot_lune(m, gamma, delta, show, format):
     ax.plot(x, y, "k-", transform=data_crs)
 
     # Plot source-type
-    # x, y = projection.transform_point(gamma, delta, data_crs)
-    # xy = (x,y)
-    # bb = beach(m, xy=(x,y), facecolor="red", width=20, show_iso=True, axes=None)
-    # # bb.set_transform(fig.dpi_scale_trans)
-    # # bb.set_offsets((gamma, delta))
-    # # bb._transOffset = ax.transData
-    # bb.set_transform(transforms.Affine2D(np.identity(3)))
-    # for point in bb._paths:
-    #     point.vertices -= xy
-    # bb.set_offsets(xy)
-    # bb.set_offset_transform(ax.transData)
-    # ax.add_collection(bb)
-    ax.plot(gamma, delta, "ro", markeredgecolor="k", transform=ccrs.PlateCarree())
+    x, y = projection.transform_point(gamma, delta, data_crs)
+    xy = (x,y)
+    bb = beach(m, xy=(x,y), facecolor="red", width=20, show_iso=True, axes=None)
+    bb.set_transform(transforms.Affine2D(np.identity(3)))
+    for point in bb._paths:
+        point.vertices -= xy
+    bb.set_offsets(xy)
+    bb.set_offset_transform(ax.transData)
+    ax.add_collection(bb)
+    # ax.plot(gamma, delta, "ro", markeredgecolor="k", transform=ccrs.PlateCarree())
 
     if show:
         plt.show()
