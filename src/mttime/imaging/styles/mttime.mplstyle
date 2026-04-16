@@ -1,6 +1,6 @@
 ### FONT
 font.size: 8.0
-font.sans-serif: Arial
+#font.sans-serif: Arial
 
 ### FIGURE
 figure.facecolor: white
