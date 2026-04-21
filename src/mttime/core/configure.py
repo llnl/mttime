@@ -309,7 +309,7 @@ class Configure(object):
             df.fillna({component: df.Z}, inplace=True)
             location += 1
 
-        df.drop(columns="used", axis=1, inplace=True)
+        df.drop(columns="used", inplace=True)
         df[self.components] = df[self.components].astype(np.int32)
 
         # Indexing linear equations
