@@ -8,7 +8,8 @@ Utility functionality for mttime
 
 import numpy as np
 from scipy.signal import fftconvolve
-import pkg_resources
+# import pkg_resources # deprecated
+from importlib.metadata import version, PackageNotFoundError
 
 
 def to_int_or_zero(value):
@@ -44,8 +45,8 @@ def get_dependency_version(package_name, raw_string=False):
         0.
     """
     try:
-        version_string = pkg_resources.get_distribution(package_name).version
-    except pkg_resources.DistributionNotFound:
+        version_string = version(package_name)
+    except PackageNotFoundError:
         return []
     if raw_string:
         return version_string
