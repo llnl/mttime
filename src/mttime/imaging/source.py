@@ -345,7 +345,7 @@ def plot_lune(m, gamma, delta, show, format):
     # path = mpath(verts, codes[::-1])
     path = mpath(verts)
     ax.set_boundary(path, transform=data_crs)
-    ax.set_extent([-30, 30, -90, 90], data_crs)
+    ax.set_extent([-30, 30, -90, 90])
 
     # Add gridlines
     xlocs = np.arange(-30, 30 + 10, 10, dtype=np.int32)
